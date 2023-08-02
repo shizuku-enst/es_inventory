@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>あんスタ在庫管理</title>
+    <script src="./script.js"></script>
+</head>
+<style>
+    td,th{border:solid 1px #aaaaaa;padding:1px 10px}
+    table{
+        border-collapse:collapse;
+        padding: 10px;
+	}
+    img{
+    width: 500;
+    max-width: 100%;
+}
+</style>
+<body>
+    ユーザー：
+    <select id="user" onchange="versionGet(this)">
+        <option></option>
+        <option>しずく</option>
+        <option>るーたん</option>
+        <option>れもん</option>
+    </select><br>
+
+    弾：
+    <select id="version"></select><br>
+
+    ユニット：
+    <select id="unit">
+        <option>----スタプロ----</option>
+        <option>fine</option>
+        <option>Trickstar</option>
+        <option>流星隊</option>
+        <option>ALKALOID</option>
+        <option>----コズプロ----</option>
+        <option>Eden</option>
+        <option>Valkyrie</option>
+        <option>2wink</option>
+        <option>Crazy:B</option>
+        <option>----リズリン----</option>
+        <option>UNDEAD</option>
+        <option>Ra*bits</option>
+        <option>紅月</option>
+        <option>----ニューディ----</option>
+        <option>Knights</option>
+        <option>Switch</option>
+        <option>MaM</option>
+    </select>
+
+    <button onclick="dataget(this)">表示</button><br><br>
+    <input type="text" id="usercopy" hidden>
+    <input type="text" id="versioncopy" hidden>
+    <input type="text" id="unitcopy" hidden>
+
+    <table id="table"></table>
+    <img id="image">
+</body>
+</html>
