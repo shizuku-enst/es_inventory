@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>あんスタ在庫管理</title>
+    <script src="./script.js"></script>
+</head>
+<link rel="stylesheet" href="./style.css" type="text/css">
+<body>
+    ユーザー：
+    <select id="user">
+        <option></option>
+        <option>しずく</option>
+        <option>るーたん</option>
+        <option>れもん</option>
+    </select><br>
+
+    <div id="character_display">
+        アイドル：
+        <select id="member">
+            <option>----スタプロ----</option>
+            <option>天祥院英智</option>
+            <option>日々樹渉</option>
+            <option>伏見弓弦</option>
+            <option>姫宮桃李</option>
+            <option>明星スバル</option>
+            <option>氷鷹北斗</option>
+            <option>遊木真</option>
+            <option>衣更真緒</option>
+            <option>深海奏汰</option>
+            <option>南雲鉄虎</option>
+            <option>高峯翠</option>
+            <option>守沢千秋</option>
+            <option>仙石忍</option>
+            <option>天城一彩</option>
+            <option>白鳥藍良</option>
+            <option>礼瀬マヨイ</option>
+            <option>風早巽</option>
+            <option>----コズプロ----</option>
+            <option>乱凪砂</option>
+            <option>七種茨</option>
+            <option>巴日和</option>
+            <option>漣ジュン</option>
+            <option>斎宮宗</option>
+            <option>影片みか</option>
+            <option>葵ひなた</option>
+            <option>葵ゆうた</option>
+            <option>天城燐音</option>
+            <option>HiMERU</option>
+            <option>桜河こはく</option>
+            <option>椎名ニキ</option>
+            <option>----リズリン----</option>
+            <option>朔間零</option>
+            <option>乙狩アドニス</option>
+            <option>大神晃牙</option>
+            <option>羽風薫</option>
+            <option>天満光</option>
+            <option>紫之創</option>
+            <option>仁兎なずな</option>
+            <option>真白友也</option>
+            <option>蓮巳敬人</option>
+            <option>鬼龍紅郎</option>
+            <option>神崎颯馬</option>
+            <option>----ニューディ----</option>
+            <option>月永レオ</option>
+            <option>朔間凛月</option>
+            <option>鳴上嵐</option>
+            <option>瀬名泉</option>
+            <option>朱桜司</option>
+            <option>逆先夏目</option>
+            <option>青葉つむぎ</option>
+            <option>春川宙</option>
+            <option>三毛縞斑</option>
+        </select>
+        
+        <button onclick="memberget(this)">表示</button><br><br>
+    </div>
+    <input type="text" id="usercopy" hidden>
+    <input type="text" id="membercopy"  value="none" hidden>
+
+    <table id="table">
+    </table>
+    ユニット表示(弾ごと)は<a href="https://shizuku-enst.github.io/es_inventory/ユニット表示/index.html">こちら</a>
+    全キャラ表示(弾ごと)は<a href="https://shizuku-enst.github.io/es_inventory/全キャラ表示/index.html">こちら</a>
+</body>
+</html>

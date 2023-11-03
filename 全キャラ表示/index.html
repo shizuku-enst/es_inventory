@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>あんスタ在庫管理</title>
+    <script src="./script.js"></script>
+</head>
+<link rel="stylesheet" href="./style.css" type="text/css">
+<body>
+    ユーザー：
+    <select id="user" onchange="versionGet(this)">
+        <option></option>
+        <option>しずく</option>
+        <option>るーたん</option>
+        <option>れもん</option>
+    </select><br>
+
+    <div id="version_display">
+        弾：
+    <select id="version"></select><br>
+        
+    <button onclick="memberget(this)">表示</button><br><br>
+    </div>
+    <input type="text" id="usercopy" hidden>
+    <input type="text" id="versioncopy"  value="none" hidden>
+
+    <table id="table">
+    </table><br>
+    ユニット表示(弾ごと)は<a href="https://shizuku-enst.github.io/es_inventory/ユニット表示/index.html">こちら</a><br>
+    キャラクター表示(全弾)は<a href="https://shizuku-enst.github.io/es_inventory/キャラクター表示/index.html">こちら</a><br>
+</body>
+</html>
