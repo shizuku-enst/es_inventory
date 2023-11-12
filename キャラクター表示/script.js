@@ -15,23 +15,22 @@ async function memberget(btn){
     const membercopy=document.getElementById("membercopy");
     const user=document.getElementById("user").value;
     const usercopy=document.getElementById("usercopy");
-    const versioncopy=document.getElementById("versioncopy");
-    const unitcopy=document.getElementById("unitcopy");
     const table=document.getElementById("table");
     if(member.match("-")||user=="") return
     btn.disabled=true;
-    const write=document.getElementById("table").innerText.replace(/\+|\-|\t/g,"");
+    let write=document.getElementById("table").innerText.replace(/\+|\-|\t/g,"");
 
     //枚数書き込み
+    write=write.replace("バージョン画像枚数ボタン");
     if(write){
         if(membercopy!="none"){
             const tableData=document.getElementById("table").innerText.split(/\n/);
-            tableData.shift()
-            const tableData2=tableData.map(e=>e.split(/\t/))
+            tableData.shift();
+            const tableData2=tableData.map(e=>e.split(/\t/));
             let send="";
             for(let i=0;i<tableData2.length;i++)
                 send+=`?${tableData2[i][0]}?${tableData2[i][2]}`
-            await fetch(`https://script.google.com/macros/s/AKfycbw-hfbqj7e3YcRLyuim2K6jKPI3qiVrOjLCAJ_LZwPCBm6r_EO-4wagYvtZiiY8D1kR/exec?data=${usercopy.value}?${membercopy.value}${send}`);
+            fetch(`https://script.google.com/macros/s/AKfycbw-hfbqj7e3YcRLyuim2K6jKPI3qiVrOjLCAJ_LZwPCBm6r_EO-4wagYvtZiiY8D1kR/exec?data=${usercopy.value}?${membercopy.value}${send}`);
         }
     }
     //テーブル削除
