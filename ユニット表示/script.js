@@ -68,3 +68,30 @@ function dec(i){
     if(document.getElementById("idol"+i).innerText=="0") return
     document.getElementById("idol"+i).innerText=Number(document.getElementById("idol"+i).innerText)-1
 }
+
+//ページ遷移時に書き込みに行く
+window.onbeforeunload = function(e) {
+    const user=document.getElementById("user").value;
+    const usercopy=document.getElementById("usercopy");
+    const version=document.getElementById("version").value;
+    const versioncopy=document.getElementById("versioncopy");
+    const unit=document.getElementById("unit").value;
+    const unitcopy=document.getElementById("unitcopy");
+    const membercopy=document.getElementById("membercopy").value;
+    const table=document.getElementById("table");
+    if(user==""||version==""||unit.match("-"))return
+    const write=document.getElementById("table").innerText.replace(/\+|\-|\t/g,"");
+
+    //枚数書き込み
+    if(write){
+        if(membercopy=="none"){
+            const send=write.match(/\d+/g).join("?");
+            fetch(`https://script.google.com/macros/s/AKfycbyFPBKSXc1SozfPNEVxBRA3JBLYkDYItbKgvZXXf72Ut-dmqAj5swkJQOEivpa59ZfW/exec?data=${usercopy.value}?${versioncopy.value}?${unitcopy.value}?${send}`);
+        }
+        else{
+            const versionlist=document.getElementById("table");
+            console.log(versionlist)
+        }
+    }
+
+}
