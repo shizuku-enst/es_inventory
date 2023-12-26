@@ -18,3 +18,6 @@ img{
     width: 10%;
     max-width:1px;
 }
+body{
+    touch-action: manipulation;
+}
