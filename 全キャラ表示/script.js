@@ -1,3 +1,4 @@
+let flag=false;
 async function versionGet(user){
     const version=document.getElementById("version");
     while(version.firstChild ){
@@ -13,13 +14,15 @@ async function versionGet(user){
 
 //+ボタンの処理
 function add(i){
-    document.getElementById("idol"+i).innerText=Number(document.getElementById("idol"+i).innerText)+1
+    document.getElementById("idol"+i).innerText=Number(document.getElementById("idol"+i).innerText)+1;
+    flag=true;
 }
 
 //-ボタンの処理
 function dec(i){
     if(document.getElementById("idol"+i).innerText=="0") return
-    document.getElementById("idol"+i).innerText=Number(document.getElementById("idol"+i).innerText)-1
+    document.getElementById("idol"+i).innerText=Number(document.getElementById("idol"+i).innerText)-1;
+    flag=true;
 }
 
 //表示ボタンが押されたときの処理
@@ -62,4 +65,27 @@ async function memberget(btn){
     usercopy.value=user;
     versioncopy.value=version;
     btn.disabled=false;
+}
+
+window.onbeforeunload = function(e){
+    const user=document.getElementById("user").value;
+    const usercopy=document.getElementById("usercopy");
+    const versioncopy=document.getElementById("versioncopy");
+    const version=document.getElementById("version").value;
+    const table=document.getElementById("table");
+    const write=document.getElementById("table").innerText.replace(/\+|\-|\t/g,"");
+
+    //枚数書き込み
+    if(flag){
+        if(versioncopy!="none"){
+            const tableData=document.getElementById("table").innerText.split(/\n/);
+            tableData.shift()
+            const tableData2=tableData.map(e=>e.split(/\t/))
+            let send="";
+            for(let i=0;i<tableData2.length;i++)
+                send+=`?${tableData2[i][2]}`
+            fetch(`https://script.google.com/macros/s/AKfycbze0MajIj7xYD8vosBxjZhS1tRZVyIswZo19vScfcsbE_D6tORHm-SFT9ZGE4-Z1MPEDQ/exec?data=${usercopy.value}?${versioncopy.value}${send}`);
+        }
+    }
+    return false;
 }
