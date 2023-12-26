@@ -51,3 +51,28 @@ async function memberget(btn){
     membercopy.value=member;
     btn.disabled=false;
 }
+
+//ページ遷移時に書き込みに行く
+window.onbeforeunload = function(e) {
+    const member=document.getElementById("member").value;
+    const membercopy=document.getElementById("membercopy");
+    const user=document.getElementById("user").value;
+    const usercopy=document.getElementById("usercopy");
+    const table=document.getElementById("table");
+    if(member.match("-")||user=="") return
+    let write=document.getElementById("table").innerText.replace(/\+|\-|\t/g,"");
+
+    //枚数書き込み
+    write=write.replace("バージョン画像枚数ボタン");
+    if(write){
+        if(membercopy!="none"){
+            const tableData=document.getElementById("table").innerText.split(/\n/);
+            tableData.shift();
+            const tableData2=tableData.map(e=>e.split(/\t/));
+            let send="";
+            for(let i=0;i<tableData2.length;i++)
+                send+=`?${tableData2[i][0]}?${tableData2[i][2]}`
+            fetch(`https://script.google.com/macros/s/AKfycbw-hfbqj7e3YcRLyuim2K6jKPI3qiVrOjLCAJ_LZwPCBm6r_EO-4wagYvtZiiY8D1kR/exec?data=${usercopy.value}?${membercopy.value}${send}`);
+        }
+    }
+}
