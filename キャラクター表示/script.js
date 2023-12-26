@@ -1,12 +1,15 @@
+let flag=false;
 //+ボタンの処理
 function add(i){
-    document.getElementById("idol"+i).innerText=Number(document.getElementById("idol"+i).innerText)+1
+    document.getElementById("idol"+i).innerText=Number(document.getElementById("idol"+i).innerText)+1;
+    flag=true;
 }
 
 //-ボタンの処理
 function dec(i){
     if(document.getElementById("idol"+i).innerText=="0") return
-    document.getElementById("idol"+i).innerText=Number(document.getElementById("idol"+i).innerText)-1
+    document.getElementById("idol"+i).innerText=Number(document.getElementById("idol"+i).innerText)-1;
+    flag=true;
 }
 
 //過去弾の表示ボタンが押されたときの処理
@@ -64,7 +67,7 @@ window.onbeforeunload = function(e) {
 
     //枚数書き込み
     write=write.replace("バージョン画像枚数ボタン");
-    if(write){
+    if(flag){
         if(membercopy!="none"){
             const tableData=document.getElementById("table").innerText.split(/\n/);
             tableData.shift();
