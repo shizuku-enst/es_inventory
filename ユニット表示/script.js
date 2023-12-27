@@ -1,4 +1,3 @@
-let flag=false;
 async function versionGet(user){
     const version=document.getElementById("version");
     while(version.firstChild ){
@@ -61,15 +60,13 @@ async function dataget(btn){
 
 //+ボタンの処理
 function add(i){
-    document.getElementById("idol"+i).innerText=Number(document.getElementById("idol"+i).innerText)+1;
-    flag=true;
+    document.getElementById("idol"+i).innerText=Number(document.getElementById("idol"+i).innerText)+1
 }
 
 //-ボタンの処理
 function dec(i){
     if(document.getElementById("idol"+i).innerText=="0") return
-    document.getElementById("idol"+i).innerText=Number(document.getElementById("idol"+i).innerText)-1;
-    flag=true;
+    document.getElementById("idol"+i).innerText=Number(document.getElementById("idol"+i).innerText)-1
 }
 
 //ページ遷移時に書き込みに行く
@@ -86,7 +83,7 @@ window.onbeforeunload = function(e) {
     const write=document.getElementById("table").innerText.replace(/\+|\-|\t/g,"");
 
     //枚数書き込み
-    if(flag){
+    if(write){
         if(membercopy=="none"){
             const send=write.match(/\d+/g).join("?");
             fetch(`https://script.google.com/macros/s/AKfycbyFPBKSXc1SozfPNEVxBRA3JBLYkDYItbKgvZXXf72Ut-dmqAj5swkJQOEivpa59ZfW/exec?data=${usercopy.value}?${versioncopy.value}?${unitcopy.value}?${send}`);
