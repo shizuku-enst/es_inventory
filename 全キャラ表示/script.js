@@ -41,7 +41,7 @@ async function memberget(btn){
             let send="";
             for(let i=0;i<tableData2.length;i++)
                 send+=`?${tableData2[i][2]}`
-            send=send.replace("?undefined")
+            send=send.replace("?undefined","")
             console.log(send);
             fetch(`https://script.google.com/macros/s/AKfycbze0MajIj7xYD8vosBxjZhS1tRZVyIswZo19vScfcsbE_D6tORHm-SFT9ZGE4-Z1MPEDQ/exec?data=${usercopy.value}?${versioncopy.value}${send}`);
         }
