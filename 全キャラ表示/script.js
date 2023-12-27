@@ -34,15 +34,14 @@ async function memberget(btn){
 
     //枚数書き込み
     if(write){
-        console.log("1")
         if(versioncopy!="none"){
-            console.log("2")
             const tableData=document.getElementById("table").innerText.split(/\n/);
             tableData.shift()
             const tableData2=tableData.map(e=>e.split(/\t/))
             let send="";
             for(let i=0;i<tableData2.length;i++)
                 send+=`?${tableData2[i][2]}`
+            console.log(send);
             fetch(`https://script.google.com/macros/s/AKfycbze0MajIj7xYD8vosBxjZhS1tRZVyIswZo19vScfcsbE_D6tORHm-SFT9ZGE4-Z1MPEDQ/exec?data=${usercopy.value}?${versioncopy.value}${send}`);
         }
     }
