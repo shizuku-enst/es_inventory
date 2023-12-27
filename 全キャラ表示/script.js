@@ -34,7 +34,9 @@ async function memberget(btn){
 
     //枚数書き込み
     if(write){
+        console.log("1")
         if(versioncopy!="none"){
+            console.log("2")
             const tableData=document.getElementById("table").innerText.split(/\n/);
             tableData.shift()
             const tableData2=tableData.map(e=>e.split(/\t/))
