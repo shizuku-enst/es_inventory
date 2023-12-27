@@ -27,6 +27,7 @@ async function dataget(btn){
     //枚数書き込み
     if(write){
         console.log("1")
+        const send=write.match(/\d+/g).join("?");
         await fetch(`https://script.google.com/macros/s/AKfycbyFPBKSXc1SozfPNEVxBRA3JBLYkDYItbKgvZXXf72Ut-dmqAj5swkJQOEivpa59ZfW/exec?data=${usercopy.value}?${versioncopy.value}?${unitcopy.value}?${send}`);
     }
     //テーブル削除
