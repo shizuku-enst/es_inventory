@@ -18,7 +18,7 @@ async function dataget(btn){
     const versioncopy=document.getElementById("versioncopy");
     const unit=document.getElementById("unit").value;
     const unitcopy=document.getElementById("unitcopy");
-    const membercopy=document.getElementById("membercopy").value;
+    const membercopy=document.getElementById("membercopy");
     const table=document.getElementById("table");
     if(user==""||version==""||unit.match("-"))return
     btn.disabled=true;
@@ -27,7 +27,7 @@ async function dataget(btn){
     //枚数書き込み
     if(write){
         console.log("1")
-        if(membercopy=="none"){
+        if(membercopy.value=="none"){
             console.log("2")
             const send=write.match(/\d+/g).join("?");
             await fetch(`https://script.google.com/macros/s/AKfycbyFPBKSXc1SozfPNEVxBRA3JBLYkDYItbKgvZXXf72Ut-dmqAj5swkJQOEivpa59ZfW/exec?data=${usercopy.value}?${versioncopy.value}?${unitcopy.value}?${send}`);
@@ -79,14 +79,14 @@ window.onbeforeunload = function(e) {
     const versioncopy=document.getElementById("versioncopy");
     const unit=document.getElementById("unit").value;
     const unitcopy=document.getElementById("unitcopy");
-    const membercopy=document.getElementById("membercopy").value;
+    const membercopy=document.getElementById("membercopy");
     const table=document.getElementById("table");
     if(user==""||version==""||unit.match("-"))return
     const write=document.getElementById("table").innerText.replace(/\+|\-|\t/g,"");
 
     //枚数書き込み
     if(write){
-        if(membercopy=="none"){
+        if(membercopy.value=="none"){
             const send=write.match(/\d+/g).join("?");
             fetch(`https://script.google.com/macros/s/AKfycbyFPBKSXc1SozfPNEVxBRA3JBLYkDYItbKgvZXXf72Ut-dmqAj5swkJQOEivpa59ZfW/exec?data=${usercopy.value}?${versioncopy.value}?${unitcopy.value}?${send}`);
         }
