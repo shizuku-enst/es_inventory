@@ -88,7 +88,7 @@ img.card{
     background-color: rgba(55 190 176 / 25%);
     width: 100%;
 }
-body{
+html{
     touch-action: manipulation;
     user-select: none;
 }
