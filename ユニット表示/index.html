@@ -18,10 +18,10 @@
 
     <div id="version_display">
         弾：
-        <select id="version"></select><br>
+        <select id="version" onchange="sheetGet()"></select><br>
 
-        ユニット：
-        <select id="unit">
+        
+        <select id="unit" onchange="tableMake()">
             <option>----スタプロ----</option>
             <option>fine</option>
             <option>Trickstar</option>
@@ -40,9 +40,9 @@
             <option>Knights</option>
             <option>Switch</option>
             <option>MaM</option>
-        </select>
+        </select><br><br>
 
-        <button onclick="dataget(this)">表示</button><br><br>
+        <button onclick="keep(this)">保存</button><Br><br>
     </div>
     <input type="text" id="usercopy" hidden>
     <input type="text" id="versioncopy" hidden>
