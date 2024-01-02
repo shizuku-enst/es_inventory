@@ -8,6 +8,7 @@
 </head>
 <link rel="stylesheet" href="./style.css" type="text/css">
 <body>
+    <div>全キャラ表示</div>
     ユーザー：
     <select id="user" onchange="versionGet(this)">
         <option></option>
@@ -18,9 +19,9 @@
 
     <div id="version_display">
         弾：
-    <select id="version"></select><br>
-        
-    <button onclick="memberget(this)">表示</button><br><br>
+    <select id="version" onchange="sheetGet(this)"></select><br>
+
+    <button onclick="keep(this)" id="keep">保存</button><br><br>
     </div>
     <input type="text" id="usercopy" hidden>
     <input type="text" id="versioncopy"  value="none" hidden>
