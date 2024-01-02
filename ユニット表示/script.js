@@ -1,15 +1,26 @@
 let change=new Set();
 async function versionGet(user){
     const version=document.getElementById("version");
+    let userData=window.sessionStorage.getItem(user.value);
     while(version.firstChild ){
         version.removeChild( version.firstChild );
     }
-    await fetch(`https://script.google.com/macros/s/AKfycbwfv8m1bMfPRlrQGZ50vSvWS3rMadLXsuwfsuv9bb6uJ00mgUOhzhXx3wgPiyLMWARr1w/exec?member=${user.value}`)
-    .then(res=>res.json())
-    .then(data=>data.map(sheet=>{
-        let option=`<option>${sheet}</option>`;
-        version.insertAdjacentHTML("beforeend",option);
-    }))
+    if(userData==null){
+        document.getElementById("user").disabled=true;
+        document.getElementById("version").disabled=true;
+        await fetch(`https://script.google.com/macros/s/AKfycbwfv8m1bMfPRlrQGZ50vSvWS3rMadLXsuwfsuv9bb6uJ00mgUOhzhXx3wgPiyLMWARr1w/exec?member=${user.value}`)
+        .then(res=>res.json())
+        .then(data=>{
+            userData=data;
+            window.sessionStorage.setItem(user.value,JSON.stringify(data));
+        })
+        document.getElementById("user").disabled=false;
+        document.getElementById("version").disabled=false;
+    }
+    else userData=JSON.parse(userData);
+    let option="<option></option>";
+    userData.map(sheet=>option+=`<option>${sheet}</option>`)
+    version.insertAdjacentHTML("beforeend",option);
 }
 
 //+ボタンの処理
@@ -41,6 +52,7 @@ async function sheetGet(){
     const usercopy=document.getElementById("usercopy");
     const version=document.getElementById("version").value;
     const versioncopy=document.getElementById("versioncopy");
+    if(version=="") return;
     if(!window.sessionStorage.getItem(user+"/"+version)){
         document.getElementById("unit").disabled=true;
         await fetch(`https://script.google.com/macros/s/AKfycbwUfSsdZNOnFCq95W2lKZ6DCh_jcKXDMOiWEhfJDOgh1Jtts92n5IZ638VRD8IvVHQ/exec?data=${user}?${version}`)
